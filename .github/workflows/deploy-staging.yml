@@ -11,12 +11,12 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'stage')
     
     steps:
-      - uses: action/checkout@v1
+      - uses: actions/checkout@v1
       - name: npm install and build webpack
         run: |
           npm install
           npm run build
-      - uses: action/upload-artifact@master
+      - uses: actions/upload-artifact@master
         with:
           name: webpack artifacts
           path: public/
@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: action/checkout@v1
+      - uses: actions/checkout@v1
       
       - name: download build artifact
-        uses: action/download-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: webpack artifacts
           path: public
